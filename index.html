@@ -25,14 +25,17 @@
 </head>
 
 <body>
-    <header>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
-        </label>
-    </header>
-    <div class="container txt-dark">
+    <nav>
+        <div class="btn-container">
+            <span
+                class="material-icons dark btn display-none">
+                dark_mode </span>
+            <span class="material-icons light btn">
+                light_mode </span>
+        </div>
         <h3>Bootstrap Workbook</h3>
+    </nav>
+    <div class="container txt-dark">
         <div class="row">
             <a class="col box"
                 href="01.container.html"> <span
@@ -83,12 +86,26 @@
         crossorigin="anonymous"></script>
     <script>
         $(document).ready(function () {
-            $('input[type="checkbox"]').on("click", function () {
-                $('a').toggleClass('box-dark')
-                $('body').toggleClass('bg-dark')
-                $('h3').toggleClass('text-dark')
+            let darkMode = false
+            $('.btn').on("click", function () {
+                if (darkMode == false) {
+                    darkMode = true
+                    $('a').addClass('box-dark')
+                    $('body').addClass('bg-dark')
+                    $('.dark').removeClass('display-none')
+                    $('.light').addClass('display-none')
+                    $('nav').addClass('bg-dark-secondary')
+                    $('.btn-container').addClass('box-dark')
+                }
+                else {
+                    darkMode = false
+                    $('a').removeClass('box-dark')
+                    $('body').removeClass('bg-dark')
+                    $('.dark').addClass('display-none')
+                    $('.light').removeClass('display-none')
+                    $('nav').removeClass('bg-dark-secondary')
+                }
             })
-
         })
     </script>
 </body>
